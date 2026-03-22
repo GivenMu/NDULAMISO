@@ -1,28 +1,120 @@
 const questions = [
-{q:"Naruto rival?",a:["Sasuke","Goku","Eren","Luffy"],c:0},
-{q:"Luffy power?",a:["Rubber","Fire","Ice","Wind"],c:0},
-{q:"Gojo ability?",a:["Infinity","Fire","Water","Shadow"],c:0},
-{q:"AOT main?",a:["Eren","Naruto","Ichigo","Luffy"],c:0},
-{q:"Light uses?",a:["Death Note","Sword","Magic","Gun"],c:0},
-{q:"Strongest Saiyan?",a:["Goku","Krillin","Yamcha","Bulma"],c:0},
-{q:"Demon Slayer MC?",a:["Tanjiro","Naruto","Deku","Luffy"],c:0},
-{q:"JJK energy?",a:["Cursed","Magic","Ki","Aura"],c:0},
-{q:"Ichigo role?",a:["Soul Reaper","Pirate","Ninja","Hero"],c:0},
-{q:"Hero school anime?",a:["MHA","Naruto","Bleach","DN"],c:0},
-{q:"Ndumiso are you HIM?",a:["YES 😤","No 😭","Reels","Who?"],c:0}
+{
+q: "In Naruto Shippuden, what is Naruto’s chakra nature?",
+a: ["Lightning", "Wind", "Fire", "Earth"],
+c: "Wind"
+},
+{
+q: "Who is the main antagonist in Bleach’s Arrancar arc?",
+a: ["Aizen", "Ulquiorra", "Yhwach", "Grimmjow"],
+c: "Aizen"
+},
+{
+q: "In Death Note, what is L’s real name?",
+a: ["Near", "Light", "L Lawliet", "Mello"],
+c: "L Lawliet"
+},
+{
+q: "In Attack on Titan, what type of Titan is Eren?",
+a: ["Armored", "Colossal", "Attack Titan", "Beast"],
+c: "Attack Titan"
+},
+{
+q: "Who is Gojo Satoru in Jujutsu Kaisen?",
+a: ["Villain", "Teacher", "Student", "Curse"],
+c: "Teacher"
+},
+{
+q: "In Demon Slayer, what is Tanjiro’s main breathing style?",
+a: ["Water", "Flame", "Wind", "Thunder"],
+c: "Water"
+},
+{
+q: "In Tokyo Ghoul, what is Kaneki’s rank?",
+a: ["SSS", "A", "Half-ghoul", "Human"],
+c: "Half-ghoul"
+},
+{
+q: "In Code Geass, what power does Lelouch have?",
+a: ["Sharingan", "Geass", "Bankai", "Domain"],
+c: "Geass"
+},
+{
+q: "In Black Clover, what is Asta’s ability?",
+a: ["Magic", "Anti-magic", "Fire", "Lightning"],
+c: "Anti-magic"
+},
+{
+q: "In Sword Art Online, what is Kirito known as?",
+a: ["Black Swordsman", "Shadow King", "Dragon", "Hero"],
+c: "Black Swordsman"
+},
+{
+q: "In Steins;Gate, what is Okabe’s nickname?",
+a: ["Mad Scientist", "Time Lord", "Zero", "Doctor"],
+c: "Mad Scientist"
+},
+{
+q: "In Fullmetal Alchemist, what is Edward searching for?",
+a: ["Gold", "Philosopher’s Stone", "Weapon", "Power"],
+c: "Philosopher’s Stone"
+},
+{
+q: "In Hunter x Hunter, what is Gon’s Nen type?",
+a: ["Emitter", "Enhancer", "Manipulator", "Specialist"],
+c: "Enhancer"
+},
+{
+q: "In Chainsaw Man, what does Denji turn into?",
+a: ["Devil", "Chainsaw Man", "Ghost", "Hunter"],
+c: "Chainsaw Man"
+},
+{
+q: "In Solo Leveling, what is Sung Jin-Woo?",
+a: ["Mage", "Shadow Monarch", "Knight", "Hunter"],
+c: "Shadow Monarch"
+},
+{
+q: "In Classroom of the Elite, what is Ayanokoji known for?",
+a: ["Strength", "Intelligence", "Magic", "Speed"],
+c: "Intelligence"
+},
+{
+q: "In Re:Zero, what ability does Subaru have?",
+a: ["Teleport", "Return by Death", "Fire", "Time Stop"],
+c: "Return by Death"
+},
+{
+q: "In Spy x Family, what is Anya’s ability?",
+a: ["Mind reading", "Strength", "Speed", "Invisibility"],
+c: "Mind reading"
+},
+{
+q: "In Tokyo Revengers, what does Takemichi do?",
+a: ["Fight demons", "Time travel", "Magic", "Fly"],
+c: "Time travel"
+},
+{
+q: "FINAL: Ndumiso… are you actually HIM? 😭🔥",
+a: ["YES 😤", "No 😭", "I guessed", "What is anime"],
+c: "YES 😤"
+}
 ];
 
-let current=0,score=0,timer=15,interval;
+let current = 0;
+let score = 0;
+let timer = 15;
+let interval;
 
-const qEl=document.getElementById("question");
-const ans=document.getElementById("answers");
-const progress=document.getElementById("progress");
-const scoreEl=document.getElementById("score");
-const timerEl=document.getElementById("timer");
-const fill=document.getElementById("progressFill");
-const resultText=document.getElementById("resultText");
-const rank=document.getElementById("rank");
-const extra=document.getElementById("extra");
+const qEl = document.getElementById("question");
+const ans = document.getElementById("answers");
+const progress = document.getElementById("progress");
+const scoreEl = document.getElementById("score");
+const timerEl = document.getElementById("timer");
+const fill = document.getElementById("progressFill");
+const resultText = document.getElementById("resultText");
+const rank = document.getElementById("rank");
+const extra = document.getElementById("extra");
 
 function startGame(){
 document.getElementById("startScreen").classList.add("hidden");
@@ -32,57 +124,62 @@ loadQ();
 
 function loadQ(){
 clearInterval(interval);
-timer=15;
+timer = 15;
 startTimer();
 
-let q=questions[current];
-qEl.textContent=q.q;
+let q = questions[current];
+qEl.textContent = q.q;
 
-ans.innerHTML="";
+// 🔥 RANDOMIZE ANSWERS
+let shuffled = [...q.a].sort(() => Math.random() - 0.5);
 
-q.a.forEach((text,i)=>{
-let b=document.createElement("button");
-b.className="btn";
-b.textContent=text;
-b.onclick=()=>select(i,b);
+ans.innerHTML = "";
+
+shuffled.forEach(option=>{
+let b = document.createElement("button");
+b.className = "btn";
+b.textContent = option;
+
+b.onclick = () => select(option, q.c, b);
+
 ans.appendChild(b);
 });
 
-progress.textContent=`${current+1}/${questions.length}`;
-scoreEl.textContent=`Score: ${score}`;
-fill.style.width=`${(current/questions.length)*100}%`;
+progress.textContent = `${current+1}/20`;
+scoreEl.textContent = `Score: ${score}`;
+fill.style.width = `${(current/20)*100}%`;
 }
 
 function startTimer(){
-interval=setInterval(()=>{
+interval = setInterval(()=>{
 timer--;
-timerEl.textContent=timer+"s";
+timerEl.textContent = timer+"s";
 
-if(timer<=5) timerEl.style.color="red";
+if(timer <= 5) timerEl.style.color = "red";
 
-if(timer===0){
+if(timer === 0){
 clearInterval(interval);
 next();
 }
 },1000);
 }
 
-function select(i,btn){
+function select(selected, correct, btn){
 clearInterval(interval);
 
-if(i===questions[current].c){
+if(selected === correct){
 score++;
 btn.classList.add("correct");
 }else{
 btn.classList.add("wrong");
 }
 
-setTimeout(next,800);
+setTimeout(next, 800);
 }
 
 function next(){
 current++;
-if(current<questions.length){
+if(current < questions.length){
 loadQ();
 }else{
 end();
@@ -93,48 +190,25 @@ function end(){
 document.getElementById("gameScreen").classList.add("hidden");
 document.getElementById("resultScreen").classList.remove("hidden");
 
-if(score>=7){
-resultText.innerHTML=`🔥 ${score}/${questions.length}`;
-rank.innerHTML="🏆 GOD LEVEL";
-extra.innerHTML="Ndumiso… you unlocked EVERYTHING 😭❤️";
+if(score >= 14){
+resultText.innerHTML = `🔥 ${score}/20`;
+rank.innerHTML = "🏆 ANIME MASTER";
+extra.innerHTML = "Ndumiso… okay nah you're HIM 😭🔥❤️";
+}else if(score >= 10){
+resultText.innerHTML = `😅 ${score}/20`;
+rank.innerHTML = "🎌 OTAKU";
+extra.innerHTML = "You know anime… but not elite 😭";
 }else{
-resultText.innerHTML=`💀 ${score}/${questions.length}`;
-rank.innerHTML="📚 TRAINING ARC";
-extra.innerHTML="Go watch anime 😭";
+resultText.innerHTML = `💀 ${score}/20`;
+rank.innerHTML = "📚 BEGINNER";
+extra.innerHTML = "Please go study anime immediately 😭";
 }
 }
 
 function restartGame(){
-current=0; score=0;
+current = 0;
+score = 0;
+
 document.getElementById("resultScreen").classList.add("hidden");
 document.getElementById("startScreen").classList.remove("hidden");
 }
-
-/* PARTICLES */
-const canvas=document.getElementById("particles");
-const ctx=canvas.getContext("2d");
-
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-
-let particles=[];
-for(let i=0;i<80;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
-}
-
-function animate(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-ctx.fillStyle="#38bdf8";
-ctx.fill();
-
-p.y+=0.5;
-if(p.y>canvas.height)p.y=0;
-});
-
-requestAnimationFrame(animate);
-}
-animate();
