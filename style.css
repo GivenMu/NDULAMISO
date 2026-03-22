@@ -1,0 +1,109 @@
+body{
+margin:0;
+font-family:'Orbitron',sans-serif;
+background:black;
+color:white;
+text-align:center;
+overflow:hidden;
+}
+
+/* GLASS EFFECT */
+.glass{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(12px);
+border-radius:15px;
+padding:20px;
+box-shadow:0 0 25px #38bdf8;
+}
+
+/* SCREEN */
+.screen{
+margin-top:120px;
+}
+
+/* BUTTON */
+button{
+padding:15px 30px;
+border:none;
+border-radius:12px;
+background:linear-gradient(45deg,#38bdf8,#22c55e);
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+box-shadow:0 0 20px #38bdf8;
+}
+
+.hidden{
+display:none;
+}
+
+/* HUD */
+.hud{
+display:flex;
+justify-content:space-around;
+margin:20px;
+}
+
+/* PROGRESS BAR */
+.progress-bar{
+width:80%;
+height:12px;
+background:#111;
+margin:auto;
+border-radius:10px;
+}
+
+#progressFill{
+height:100%;
+width:0%;
+background:linear-gradient(90deg,#38bdf8,#22c55e);
+transition:0.4s;
+}
+
+/* QUIZ */
+.quiz{
+width:80%;
+margin:auto;
+}
+
+/* BUTTONS */
+.btn{
+display:block;
+width:100%;
+margin:10px 0;
+padding:14px;
+background:#1e293b;
+border-radius:12px;
+color:white;
+}
+
+.correct{background:#22c55e!important;}
+.wrong{background:#ef4444!important;}
+
+.fade{
+animation:fade 0.5s;
+}
+
+@keyframes fade{
+from{opacity:0}
+to{opacity:1}
+}
+
+/* PARTICLES CANVAS */
+canvas{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+z-index:-1;
+}
+
+/* FOOTER */
+footer{
+margin-top:50px;
+color:#94a3b8;
+}

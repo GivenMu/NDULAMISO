@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ndumiso GOD LEVEL Anime 🎮</title>
+
+<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- START SCREEN -->
+<div id="startScreen" class="screen glass">
+  <h1>🎮 GOD LEVEL ANIME TEST</h1>
+  <p>Ndumiso… this is the FINAL BOSS 😭🔥</p>
+  <button onclick="startGame()">ENTER GAME 🚀</button>
+</div>
+
+<!-- GAME -->
+<div id="gameScreen" class="hidden">
+
+  <div class="hud glass">
+    <span id="progress"></span>
+    <span id="score"></span>
+    <span id="timer"></span>
+  </div>
+
+  <div class="progress-bar">
+    <div id="progressFill"></div>
+  </div>
+
+  <div class="quiz glass fade">
+    <h2 id="question"></h2>
+    <div id="answers"></div>
+  </div>
+
+</div>
+
+<!-- RESULT -->
+<div id="resultScreen" class="screen glass hidden">
+  <h2 id="resultText"></h2>
+  <h3 id="rank"></h3>
+  <p id="extra"></p>
+  <button onclick="restartGame()">RESTART 🔁</button>
+</div>
+
+<!-- PARTICLES -->
+<canvas id="particles"></canvas>
+
+<footer>🔥 GIVENDEV GOD MODE</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
