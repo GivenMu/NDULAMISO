@@ -10,45 +10,50 @@
 </head>
 <body>
 
-<!-- START SCREEN -->
-<div id="startScreen" class="screen glass">
-  <h1>🎮 GOD LEVEL ANIME TEST</h1>
-  <p>Ndumiso… this is the FINAL BOSS 😭🔥</p>
-  <button onclick="startGame()">ENTER GAME 🚀</button>
-</div>
+<!-- APP WRAPPER -->
+<div class="app">
 
-<!-- GAME -->
-<div id="gameScreen" class="hidden">
-
-  <div class="hud glass">
-    <span id="progress"></span>
-    <span id="score"></span>
-    <span id="timer"></span>
+  <!-- START -->
+  <div id="startScreen" class="screen glass">
+    <h1>🎮 GOD LEVEL ANIME TEST</h1>
+    <p>Ndumiso… this is the FINAL BOSS 😭🔥</p>
+    <button onclick="startGame()">ENTER GAME 🚀</button>
   </div>
 
-  <div class="progress-bar">
-    <div id="progressFill"></div>
+  <!-- GAME -->
+  <div id="gameScreen" class="hidden">
+
+    <div class="hud glass">
+      <span id="progress"></span>
+      <span id="score"></span>
+      <span id="timer"></span>
+    </div>
+
+    <div class="progress-bar">
+      <div id="progressFill"></div>
+    </div>
+
+    <div class="quiz glass fade">
+      <h2 id="question"></h2>
+      <div id="answers"></div>
+    </div>
+
   </div>
 
-  <div class="quiz glass fade">
-    <h2 id="question"></h2>
-    <div id="answers"></div>
+  <!-- RESULT -->
+  <div id="resultScreen" class="screen glass hidden">
+    <h2 id="resultText"></h2>
+    <h3 id="rank"></h3>
+    <p id="extra"></p>
+    <button onclick="restartGame()">RESTART 🔁</button>
   </div>
 
-</div>
+  <footer>🔥 GIVENDEV GOD MODE</footer>
 
-<!-- RESULT -->
-<div id="resultScreen" class="screen glass hidden">
-  <h2 id="resultText"></h2>
-  <h3 id="rank"></h3>
-  <p id="extra"></p>
-  <button onclick="restartGame()">RESTART 🔁</button>
 </div>
 
 <!-- PARTICLES -->
 <canvas id="particles"></canvas>
-
-<footer>🔥 GIVENDEV GOD MODE</footer>
 
 <script src="script.js"></script>
 </body>

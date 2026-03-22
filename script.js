@@ -1,4 +1,4 @@
-const questions=[
+const questions = [
 {q:"Naruto rival?",a:["Sasuke","Goku","Eren","Luffy"],c:0},
 {q:"Luffy power?",a:["Rubber","Fire","Ice","Wind"],c:0},
 {q:"Gojo ability?",a:["Infinity","Fire","Water","Shadow"],c:0},
@@ -24,14 +24,12 @@ const resultText=document.getElementById("resultText");
 const rank=document.getElementById("rank");
 const extra=document.getElementById("extra");
 
-/* START GAME */
 function startGame(){
 document.getElementById("startScreen").classList.add("hidden");
 document.getElementById("gameScreen").classList.remove("hidden");
 loadQ();
 }
 
-/* LOAD QUESTION */
 function loadQ(){
 clearInterval(interval);
 timer=15;
@@ -44,11 +42,9 @@ ans.innerHTML="";
 
 q.a.forEach((text,i)=>{
 let b=document.createElement("button");
-b.className="btn fade";
+b.className="btn";
 b.textContent=text;
-
 b.onclick=()=>select(i,b);
-
 ans.appendChild(b);
 });
 
@@ -57,25 +53,20 @@ scoreEl.textContent=`Score: ${score}`;
 fill.style.width=`${(current/questions.length)*100}%`;
 }
 
-/* TIMER */
 function startTimer(){
 interval=setInterval(()=>{
 timer--;
 timerEl.textContent=timer+"s";
 
-if(timer<=5){
-timerEl.style.color="red";
-}
+if(timer<=5) timerEl.style.color="red";
 
 if(timer===0){
 clearInterval(interval);
 next();
 }
-
 },1000);
 }
 
-/* SELECT ANSWER */
 function select(i,btn){
 clearInterval(interval);
 
@@ -89,7 +80,6 @@ btn.classList.add("wrong");
 setTimeout(next,800);
 }
 
-/* NEXT QUESTION */
 function next(){
 current++;
 if(current<questions.length){
@@ -99,7 +89,6 @@ end();
 }
 }
 
-/* END GAME */
 function end(){
 document.getElementById("gameScreen").classList.add("hidden");
 document.getElementById("resultScreen").classList.remove("hidden");
@@ -111,20 +100,17 @@ extra.innerHTML="Ndumiso… you unlocked EVERYTHING 😭❤️";
 }else{
 resultText.innerHTML=`💀 ${score}/${questions.length}`;
 rank.innerHTML="📚 TRAINING ARC";
-extra.innerHTML="Go watch anime immediately 😭";
+extra.innerHTML="Go watch anime 😭";
 }
 }
 
-/* RESTART */
 function restartGame(){
-current=0;
-score=0;
-
+current=0; score=0;
 document.getElementById("resultScreen").classList.add("hidden");
 document.getElementById("startScreen").classList.remove("hidden");
 }
 
-/* PARTICLES BACKGROUND */
+/* PARTICLES */
 const canvas=document.getElementById("particles");
 const ctx=canvas.getContext("2d");
 
@@ -132,13 +118,8 @@ canvas.width=window.innerWidth;
 canvas.height=window.innerHeight;
 
 let particles=[];
-
 for(let i=0;i<80;i++){
-particles.push({
-x:Math.random()*canvas.width,
-y:Math.random()*canvas.height,
-r:Math.random()*2
-});
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,r:Math.random()*2});
 }
 
 function animate(){
@@ -156,5 +137,4 @@ if(p.y>canvas.height)p.y=0;
 
 requestAnimationFrame(animate);
 }
-
 animate();
